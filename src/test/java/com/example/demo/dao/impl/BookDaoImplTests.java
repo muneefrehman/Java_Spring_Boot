@@ -57,4 +57,26 @@ public class BookDaoImplTests {
         );
     }
 
+    @Test
+    public void testThatUpdateBookGeneratesCorrectSql() {
+        Book book = TestDataUtil.createTestBookA();
+        underTest.update("978-1-2345-6789-0", book);
+        verify(jdbcTemplate).update(
+                eq("UPDATE books SET isbn = ?, title = ?, author_id = ? WHERE isbn = ?"),
+                eq("978-1-2345-6789-0"),
+                eq("The Shadow in the Attic"),
+                eq(1L),
+                eq("978-1-2345-6789-0")
+        );
+    }
+
+    @Test
+    public void testThatDeleteBookGeneratesCorrectSql() {
+        underTest.delete("978-1-2345-6789-0");
+        verify(jdbcTemplate).update(
+                eq("DELETE FROM books WHERE isbn = ?"),
+                eq("978-1-2345-6789-0")
+        );
+    }
+
 }
