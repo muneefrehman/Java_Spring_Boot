@@ -30,7 +30,29 @@ public final class TestDataUtil {
                 .build();
     }
 
+    public static AuthorEntity createTestAuthorDtoA() {
+        return AuthorEntity.builder()
+                .name("Abigail Rose")
+                .age(80)
+                .build();
+    }
+
+    public static AuthorEntity createTestAuthorDtoB() {
+        return AuthorEntity.builder()
+                .name("Thomas Cronin")
+                .age(44)
+                .build();
+    }
+
     public static BookEntity createTestBookEntityA(final AuthorEntity authorEntity)  {
+        return BookEntity.builder()
+                .isbn("978-1-2345-6789-0")
+                .title("The Shadow in The Attic")
+                .authorEntity(authorEntity)
+                .build();
+    }
+
+    public static BookEntity createTestBookA(final AuthorEntity authorEntity)  {
         return BookEntity.builder()
                 .isbn("978-1-2345-6789-0")
                 .title("The Shadow in The Attic")

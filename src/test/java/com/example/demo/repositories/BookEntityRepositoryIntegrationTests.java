@@ -47,7 +47,7 @@ public class BookEntityRepositoryIntegrationTests {
     public void testThatMultipleBooksCanBeCreatedAndRecalled() {
         AuthorEntity authorEntity = TestDataUtil.createTestAuthorEntityA();
 
-        BookEntity bookEntityA = TestDataUtil.createTestBookEntityA(authorEntity);
+        BookEntity bookEntityA = TestDataUtil.createTestBookA(authorEntity);
         underTest.save(bookEntityA);
 
         BookEntity bookEntityB = TestDataUtil.createTestBookB(authorEntity);
@@ -59,7 +59,7 @@ public class BookEntityRepositoryIntegrationTests {
         Iterable<BookEntity> result = underTest.findAll();
         assertThat(result)
                 .hasSize(3)
-                .usingRecursiveFieldByFieldElementComparatorIgnoringFields("author.id")
+                .usingRecursiveFieldByFieldElementComparatorIgnoringFields("authorEntity.id")
                 .containsExactlyInAnyOrder(bookEntityA, bookEntityB, bookEntityC);
     }
 
