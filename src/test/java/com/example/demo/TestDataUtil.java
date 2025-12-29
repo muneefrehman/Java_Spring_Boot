@@ -9,7 +9,7 @@ public final class TestDataUtil {
 
     private TestDataUtil() {}
 
-    public static AuthorEntity createTestAuthorA() {
+    public static AuthorEntity createTestAuthorEntityA() {
         return AuthorEntity.builder()
                 .name("Abigail Rose")
                 .age(80)
@@ -33,7 +33,7 @@ public final class TestDataUtil {
     public static BookEntity createTestBookEntityA(final AuthorEntity authorEntity)  {
         return BookEntity.builder()
                 .isbn("978-1-2345-6789-0")
-                .title("The Shadow in the Attic")
+                .title("The Shadow in The Attic")
                 .authorEntity(authorEntity)
                 .build();
     }
