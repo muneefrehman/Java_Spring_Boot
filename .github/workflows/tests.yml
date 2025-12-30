@@ -38,7 +38,7 @@ jobs:
           echo "--------------------------------------"
           echo "Running Maven verify (tests + coverage)"
           echo "--------------------------------------"
-          ./mvnw clean verify
+          ./mvnw clean verify -B -q
           echo "--------------------------------------"
           echo "Maven verify completed successfully"
           echo "======================================"
@@ -51,6 +51,7 @@ jobs:
           name: Test Results
           path: target/surefire-reports/*.xml
           reporter: java-junit
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Step 6: Upload JaCoCo coverage report as artifact
       - name: Upload coverage report
