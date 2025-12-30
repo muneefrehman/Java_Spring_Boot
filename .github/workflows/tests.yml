@@ -9,6 +9,7 @@ on:
 
 jobs:
   build-and-verify:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
